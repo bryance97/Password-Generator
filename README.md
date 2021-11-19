@@ -1,13 +1,13 @@
 # Password-Generator
 
 ## Purpose
-This prohject consisited of creating a password generator with specific rules. For example, ask clients if they want uppercase, and lowercase letters or special characters.
+This project consisited of creating a password generator with specific rules. For example, ask clients if they want uppercase, and lowercase letters or special characters.
 
 ## Website
 https://bryance97.github.io/Password-Generator/
 
 # Screenshot of my application
-![](./assets/images/Password-Generator .png)
+![](./assets/images/Password-Generator.png)
 
 ## Built With
 * HTML
