@@ -1,152 +1,51 @@
-// array of special characters
-var specialChar = [
-  "@",
-  "%",
-  "+",
-  "\\",
-  "/",
-  "'",
-  "!",
-  "#",
-  "$",
-  "^",
-  "?",
-  ":",
-  ",",
-  ")",
-  "(",
-  "}",
-  "{",
-  "]",
-  "[",
-  "~",
-  "-",
-  "_",
-  ".",
-];
 
-// array of numbers
-var numericChar = [
-  "0",
-  "1", 
-  "2", 
-  "3", 
-  "4", 
-  "5", 
-  "6", 
-  "7", 
-  "8", 
-  "9"
-];
+  // array of special characters
+  var specialCharacters = ["@","%","+","\\","/","'","!","#","$","^","?",":",",",")","(","}","{","]","[","~","-","_",".",];
 
-// array of lower case letters
-var lettersLower = [
-  "abcdefghijklmnopqrstuvwxyz"
-];
+  // array of numbers
+  var numericCharacters = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
-// array of upper case letters
-var letters = [
-  "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-];
+  // array of lower case letters
+  var lowerCasedCharacters = ["abcdefghijklmnopqrstuvwxyz"];
 
-var validate = 0;
+  // array of upper case letters
+  var upperCasedCharacters = ["ABCDEFGHIJKLMNOPQRSTUVWXYZ"];
 
-var passLength;
 
-var randomLetters = [];
+function generatePassword() {
+  //ask the user how many characters
+  var length = parseInt(
+    prompt("How many characters would you like your password to contain?")
+  );
 
-var lettersLowercase = [];
-
-var numbers = [];
-
-var special = [];
-
-/ Function that begins generating the password
-var generatePassword = function () {
-  //Asks for length of password
-  passLength = prompt('Please enter number for password length.')
-  //If character length is within range then continue to next criteria 
-  if (passLength >= 8 && passLength <= 128) {
-    return passUpper();
-  } else {
-    //If character length is outside range (12-128 characters) then alert should display 
-    alert('Please select a number between 8 and 128 for password length.')
-    return generatePassword();
-  }
+  //ask the user if they want numbers
+  var useNumbers = parseInt(
+    prompt("Would you like to use numbers?")
+  );
+  //ask the user if they want special characters
+  var useSpecial = parseInt(
+    prompt("Would you like to use special charatchers?")
+  );
+  //ask the user if they want uppercase letters
+  var useUpper = parseInt(
+    prompt("Would you like to use uppercase letters?")
+  );
+  //ask the user if they want lower case letters
+  var useLower = parseInt(
+    prompt("Would you like to use lowercase?")
+  );
+  // if numbers, append numbers to character array
+  // if sc, append special characters to character array
+  // if ul, append upper case letetrs to characters array
+  // if ll, append lowercase letters
+  //generate the password
+  //repeat based on number of desired characters
+  //add random character from character array to password
+  //return the password
 }
 
-//Returns uppercase letters
-var passUpper = function () {
-  var response = confirm('Would you like to have uppercase in your password?')
-  if (response === true) {
-    //Number given for 'passLength' represents the amount of elements in the password
-    for (var i = 0; i < passLength; i++) {
-      selectRandomChar(letters, randomLetters);
-    }
-    validate++;
-  }
-  return passLower();
-}
 
-//Returns lowercase letters
-var passLower = function () {
-  var response = confirm('Would you like to have lowercase in your password?')
-  if (response === true) {
-    for (var i = 0; i < passLength; i++) {
-      selectRandomChar(lettersLower, lettersLowercase);
-    }
-    validate++;
-  }
-  return passNumeric();
-}
 
-//Returns random numbers
-var passNumeric = function () {
-  var response = confirm('Would you like to have numbers in your password?')
-  if (response === true) {
-    for (var i = 0; i < passLength; i++) {
-      selectRandomChar(numericChar, numbers);
-    }
-    validate++;
-  }
-  return passSpecial();
-}
-
-//Returns special characters
-var passSpecial = function () {
-  var response = confirm('Would you like to have special characters in your password?')
-  if (response === false) {
-    if (validate === 0) {
-      alert('Please select at least 1 of options.')
-      passUpper();
-    }
-  } else {
-    for (var i = 0; i < passLength; i++) {
-      selectRandomChar(specialChar, special);
-    }
-  }
-  return passWord();
-}
-
-//Creates password
-var passWord = function () {
-  passWordArray = [];
-  var passWordFinal = passWordArray.concat(randomLetters, lettersLowercase, numbers, special);
-  var Final = [];
-  for (i = 0; i < passLength; i++) {
-    selectRandomChar(passWordFinal, Final);
-  }
-  return Final.join("");
-}
-
-//Function that extracts random elements from exisitng arrays and adds them to empty arrays
-var selectRandomChar = function (array, arrayPush) {
-  var x = Math.floor(Math.random() * array.length);
-  var y = array[x];
-  arrayPush.push(y);
-}
-
-// Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
@@ -155,8 +54,8 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
 }
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
