@@ -16,6 +16,9 @@ var generateBtn = document.querySelector("#generate");
 
 function generatePassword() {
   //ask the user how many characters
+  var length = parseInt(
+    prompt("How many characters would you like your password to contain?")
+  );
   //ask the user if they want numbers
   //ask the user if they want special characters
   //ask the user if they want uppercase letters
